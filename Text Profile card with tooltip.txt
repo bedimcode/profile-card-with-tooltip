@@ -1,0 +1,17 @@
+========== CARD ==========
+.card__header span
+Social
+
+.card__social
+https://www.linkedin.com/
+https://github.com/
+https://dribbble.com/
+
+.card__name
+Evalyn Adson
+
+.card__profession
+Web designer
+
+.card__button
+Send Message
