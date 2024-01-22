@@ -1,0 +1,210 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(230, 100%, 50%);
+  --second-color: hsl(150, 100%, 38%);
+  --title-color: hsl(230, 24%, 12%);
+  --text-color: hsl(230, 4%, 60%);
+  --gray-color: hsl(230, 24%, 88%);
+  --border-color: hsl(230, 4%, 92%);
+  --body-color: hsl(230, 100%, 98%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Syne", sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 7rem;
+}
+
+.card__article {
+  position: relative;
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+}
+
+.card__profile, 
+.card__mask {
+  width: 100px;
+  height: 100px;
+  background-color: var(--gray-color);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card__profile img, 
+.card__mask img {
+  width: 95px;
+}
+
+.card__profile {
+  border: 4px solid var(--container-color);
+  z-index: 5;
+  transition: opacity .4s, transform .4s;
+}
+
+.card__tooltip {
+  position: absolute;
+  bottom: -2rem;
+  padding-bottom: 5rem;
+  transition: opacity .4s, bottom .4s cubic-bezier(.6, -.5, .3, 1.5);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.card__content {
+  position: relative;
+  width: calc(100vw - 3rem);
+  background-color: var(--container-color);
+  box-shadow: 0 16px 32px hsla(230, 50%, 20%, .1);
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+}
+
+.card__content::after {
+  content: "";
+  width: 32px;
+  height: 32px;
+  background-color: var(--container-color);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -.75rem;
+  margin-inline: auto;
+  border-radius: .25rem;
+  rotate: 45deg;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card__header span {
+  color: var(--title-color);
+  font-weight: 500;
+}
+
+.card__social {
+  display: flex;
+  column-gap: .75rem;
+}
+
+.card__social a {
+  font-size: 1.25rem;
+  color: var(--title-color);
+}
+
+.card__image {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto 1rem;
+}
+
+.card__status {
+  width: 12px;
+  height: 12px;
+  background-color: var(--second-color);
+  position: absolute;
+  top: .5rem;
+  right: .75rem;
+  border-radius: 50%;
+  border: 2px solid var(--container-color);
+}
+
+.card__data {
+  text-align: center;
+}
+
+.card__name {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+.card__profession {
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.card__button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .5rem;
+  color: var(--first-color);
+  font-weight: 500;
+}
+
+.card__button i {
+  font-size: 1.25rem;
+}
+
+/* Scale profile image */
+.card__article:hover .card__profile {
+  transform: scale(.8);
+  opacity: .7;
+}
+
+/* Show tooltip card */
+.card__article:hover .card__tooltip {
+  opacity: 1;
+  pointer-events: initial;
+  bottom: 4rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (min-width: 540px) {
+  .card__content {
+    width: 380px;
+    padding-inline: 2rem;
+  }
+}
